@@ -64,7 +64,7 @@ namespace InvoiceManager
 			ForeColor = SystemColors.ControlText;
 		}
 
-		Rectangle ImageArea(Control c)
+		private Rectangle ImageArea(Control c)
 		{
 			Size si = c.Size;
 			Size sp = c.ClientSize;
@@ -87,7 +87,6 @@ namespace InvoiceManager
 		private void Tab_MouseMove(object sender, MouseEventArgs e)
 		{
 			Cursor = ImageArea(this).Contains(e.Location) ? Cursors.Hand : Cursors.Default;
-			//ForeColor = ImageArea(this).Contains(e.Location) ? SystemColors.HighlightText : SystemColors.GrayText;
 		}
 	}
 }

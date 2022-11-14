@@ -49,11 +49,23 @@
     <Compile Include="CustomMenuStrip.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Page.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="pages\BudgetingPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="pages\ExpensesPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\InvoicingPage.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
