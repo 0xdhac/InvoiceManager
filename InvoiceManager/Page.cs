@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace InvoiceManager
 {
-	class Page : Panel
+	abstract class Page
 	{
-		public Page()
-		{
-
-		}
+		public abstract void Draw();
+		public abstract void UpdateControls();
 	}
 }

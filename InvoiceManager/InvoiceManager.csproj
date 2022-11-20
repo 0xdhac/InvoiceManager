@@ -49,12 +49,11 @@
     <Compile Include="CustomMenuStrip.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Page.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Page.cs" />
     <Compile Include="pages\BudgetingPage.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="pages\CustomersPage.cs" />
     <Compile Include="pages\ExpensesPage.cs">
       <SubType>Component</SubType>
     </Compile>

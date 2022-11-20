@@ -5,9 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace InvoiceManager
+namespace InvoiceManager.pages
 {
-	class ExpensesPage : Page
+	class ExpensesPage
 	{
+		public void Draw(Panel parent)
+		{
+
+		}
 	}
 }

@@ -27,19 +27,21 @@ namespace InvoiceManager
 			}
 		}
 
-		public void AddTab(string name)
+		public void AddTab(string name, EventHandler click)
 		{
 			Tab t = new Tab(this, name);
 			t.Location = new Point(0, m_Tabs.Count * Tab.TabHeight);
 			m_Tabs.Add(t);
+
+			t.Click += click;
 		}
 	}
 
 	class Tab : Label
 	{
-		public const int TabHeight = 48;
-		public const int FontSize = 14;
-		public const string FontFamily = "Segoe UI";
+		public const int TabHeight = 36;
+		public const int FontSize = 10;
+		public const string FontFamily = "Arial Rounded MT";
 
 		public Tab(Control parent, string name)
 		{
@@ -51,7 +53,7 @@ namespace InvoiceManager
 			MouseMove += Tab_MouseMove;
 			MouseLeave += Tab_MouseLeave;
 			MouseEnter += Tab_MouseEnter;
-			Font = new Font(FontFamily, FontSize);
+			Font = new Font(FontFamily, FontSize, FontStyle.Bold);
 		}
 
 		private void Tab_MouseEnter(object sender, EventArgs e)

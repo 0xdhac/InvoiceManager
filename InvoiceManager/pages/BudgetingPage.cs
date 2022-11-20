@@ -7,8 +7,11 @@ using System.Windows.Forms;
 
 namespace InvoiceManager.pages
 {
-	class BudgetingPage : Page
+	class BudgetingPage
 	{
+		public void Draw(Panel parent)
+		{
 
+		}
 	}
 }

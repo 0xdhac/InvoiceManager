@@ -5,9 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace InvoiceManager
+namespace InvoiceManager.pages
 {
-	class InvoicingPage : Page
+	class InvoicingPage
 	{
+		// Main invoicing page has a list of past invoices
+		// Has button to create a new invoice
+		public void Draw(Panel parent)
+		{
+
+		}
 	}
 }
