@@ -21,6 +21,13 @@ namespace InvoiceManager
 
 		public Form1()
 		{
+			DirectoryTree tree = new DirectoryTree();
+			tree.AddDirectory(null, "Test1");
+			tree.AddDirectory(null, "Test2");
+			tree.AddDirectory(null, "Test3");
+			tree.AddDirectory("Test1", "SUPER TEST");
+			tree.AddDirectory("Test1\\SUPER TEST", "EVEN MORE SUPER TEST");
+			Debug.Write(tree.m_TopLevel.ToString());
 			/*
 			 * Page.AddPath(Page.TOP_LEVEL, "Expenses")
 			 * Page.AddPath(Page.TOP_LEVEL, "Customers")

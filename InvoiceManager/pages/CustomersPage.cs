@@ -35,7 +35,7 @@ namespace InvoiceManager.pages
 
 		// Main page lists customers
 		// Secondary page lets you add customers
-		public override void Draw()
+		public void Draw()
 		{
 			m_Parent.Controls.Add(m_Customers);
 			// Large scrollable box with list of customers
@@ -44,7 +44,7 @@ namespace InvoiceManager.pages
 			// Button to show customer profile
 		}
 
-		public override void UpdateControls()
+		public void UpdateControls()
 		{
 			m_Customers.Location = new Point(m_Parent.Width / WidthFraction, m_Parent.Height / HeightFraction + 64);
 			m_Customers.Height = (int)((float)m_Parent.Height * (float)((HeightFraction - 2) / (float)HeightFraction) - 64);

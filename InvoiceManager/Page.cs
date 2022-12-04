@@ -21,22 +21,40 @@ namespace InvoiceManager
 	{
 		static readonly int TOP_LEVEL = 0;
 
-		Directory m_TopLevel = new Directory(null, "TOP_LEVEL");
+		public Directory m_TopLevel = new Directory(null, "TOP_LEVEL");
 
 		public DirectoryTree()
 		{
 
 		}
 
-		public void AddDirectory(string parent, string name)
+		public Directory AddDirectory(string parent, string name)
 		{
 			if(parent is null)
 			{
-				m_TopLevel.Add(new Directory(null, name));
+				Directory d = new Directory(null, name);
+				m_TopLevel.Add(d);
+				return d;
 			}
 			else
 			{
+				string[] tree = parent.Split('\\');
+				Directory currentDir = m_TopLevel;
+				foreach(var dir in tree)
+				{
+					if(currentDir[dir] != null)
+					{
+						currentDir = currentDir[dir];
+					}
+					else
+					{
+						return null;
+					}
+				}
 
+				Directory d = new Directory(currentDir, name);
+				currentDir.Add(d);
+				return d;
 			}
 		}
 
@@ -69,6 +87,40 @@ namespace InvoiceManager
 		public void Add(Directory directory)
 		{
 			Children.Add(directory);
+		}
+
+		public Directory this[string key]
+		{
+			get
+			{
+				foreach(var child in Children)
+				{
+					if (child.Name == key)
+						return child;
+				}
+
+				return null;
+			}
+		}
+
+		public override string ToString()
+		{
+			string main = "";
+			int level = 0;
+			BuildString(this, ref main, level);
+			return main;
+			// Recursive function that adds a name to a string with \n and then calls the same function on its children
+		}
+
+		private void BuildString(Directory directory, ref string main, int level)
+		{
+			for (int i = 0; i < level; i++)
+				main += '\t';
+			main += directory.Name + '\n';
+			foreach(var child in directory.Children)
+			{
+				BuildString(child, ref main, level + 1);
+			}
 		}
 	}
 }
