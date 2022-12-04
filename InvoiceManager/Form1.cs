@@ -21,15 +21,22 @@ namespace InvoiceManager
 
 		public Form1()
 		{
+			/*
+			 * Page.AddPath(Page.TOP_LEVEL, "Expenses")
+			 * Page.AddPath(Page.TOP_LEVEL, "Customers")
+			 * Page.AddPath(Page.TOP_LEVEL, "Budgeting")
+			 * Page.AddPath(Page.TOP_LEVEL, "Invoicing")
+			 * 
+			 * Page.AddPath(Page.GetPath("Customers"), "New customer")
+			 * Page.AddPath(Page.GetPath("Customers"), "Modify customer")
+			 * Page.AddPath(Page.GetPath("Customers"), "Delete customer")
+			 * 
+			 */
 			InitializeComponent();
 
 			m_Menu.Width = (ClientSize.Width / 5) > 256 ? 256 : ClientSize.Width / 5;
 			m_Menu.Height = ClientSize.Height;
 			m_Menu.Location = new Point(0, 0);
-			m_Menu.AddTab("Expenses", Expenses_OnClick);
-			m_Menu.AddTab("Invoicing", Invoicing_OnClick);
-			m_Menu.AddTab("Budgeting", Budgeting_OnClick);
-			m_Menu.AddTab("Customers", Customers_OnClick);
 			Controls.Add(m_Menu);
 
 			
@@ -39,31 +46,6 @@ namespace InvoiceManager
 			m_BackgroundPanel.Location = new Point(m_Menu.Width, 0);
 
 			Resize += Form1_Resize;
-		}
-
-		private void Customers_OnClick(object sender, EventArgs e)
-		{
-			m_BackgroundPanel.Controls.Clear();
-			m_Page = new CustomersPage(m_BackgroundPanel);
-			//m_Page.UpdateControls();
-		}
-
-		private void Budgeting_OnClick(object sender, EventArgs e)
-		{
-			m_BackgroundPanel.Controls.Clear();
-			//new BudgetingPage().Draw(m_Page);
-		}
-
-		private void Invoicing_OnClick(object sender, EventArgs e)
-		{
-			m_BackgroundPanel.Controls.Clear();
-			//new InvoicingPage().Draw(m_Page);
-		}
-
-		private void Expenses_OnClick(object sender, EventArgs e)
-		{
-			m_BackgroundPanel.Controls.Clear();
-			//new ExpensesPage().Draw(m_Page);
 		}
 
 		private void Form1_Resize(object sender, EventArgs e)

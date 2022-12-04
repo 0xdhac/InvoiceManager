@@ -12,6 +12,9 @@ namespace InvoiceManager.pages
 	class CustomersPage : Page
 	{
 		ListView m_Customers = new ListView();
+		Button m_AddButton = new Button();
+		Button m_RemoveButton = new Button();
+		Button m_ModifyButton = new Button();
 		Panel m_Parent = null;
 		const int WidthFraction = 20;
 		const int HeightFraction = 15;
@@ -43,8 +46,8 @@ namespace InvoiceManager.pages
 
 		public override void UpdateControls()
 		{
-			m_Customers.Location = new Point(m_Parent.Width / WidthFraction, m_Parent.Height / HeightFraction);
-			m_Customers.Height = (int)((float)m_Parent.Height * (float)((HeightFraction - 2) / (float)HeightFraction));
+			m_Customers.Location = new Point(m_Parent.Width / WidthFraction, m_Parent.Height / HeightFraction + 64);
+			m_Customers.Height = (int)((float)m_Parent.Height * (float)((HeightFraction - 2) / (float)HeightFraction) - 64);
 			m_Customers.Width = (int)((float)m_Parent.Width * (float)((WidthFraction - 2) / (float)WidthFraction));
 		}
 	}
