@@ -66,6 +66,12 @@
     <Compile Include="pages\InvoicingPage.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="PathLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PathLabel.Designer.cs">
+      <DependentUpon>PathLabel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

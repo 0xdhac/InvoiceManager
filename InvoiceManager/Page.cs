@@ -19,27 +19,25 @@ namespace InvoiceManager
 
 	public class DirectoryTree
 	{
-		static readonly int TOP_LEVEL = 0;
+		public DirectoryLeaf m_TopLevel;
 
-		public Directory m_TopLevel = new Directory(null, "TOP_LEVEL");
-
-		public DirectoryTree()
+		public DirectoryTree(string name)
 		{
-
+			m_TopLevel = new DirectoryLeaf(null, "Head");
 		}
 
-		public Directory AddDirectory(string parent, string name)
+		public DirectoryLeaf AddDirectory(string parent, string name)
 		{
 			if(parent is null)
 			{
-				Directory d = new Directory(null, name);
+				DirectoryLeaf d = new DirectoryLeaf(null, name);
 				m_TopLevel.Add(d);
 				return d;
 			}
 			else
 			{
 				string[] tree = parent.Split('\\');
-				Directory currentDir = m_TopLevel;
+				DirectoryLeaf currentDir = m_TopLevel;
 				foreach(var dir in tree)
 				{
 					if(currentDir[dir] != null)
@@ -52,7 +50,7 @@ namespace InvoiceManager
 					}
 				}
 
-				Directory d = new Directory(currentDir, name);
+				DirectoryLeaf d = new DirectoryLeaf(currentDir, name);
 				currentDir.Add(d);
 				return d;
 			}
@@ -70,26 +68,45 @@ namespace InvoiceManager
 			
 		}
 		*/
+
+		public override string ToString()
+		{
+			return m_TopLevel.ToString();
+		}
 	}
 
-	public class Directory
+	public class DirectoryLeaf
 	{
 		public string Name;
-		public Directory Parent;
-		public List<Directory> Children = new List<Directory>();
+		public DirectoryLeaf Parent;
+		public List<DirectoryLeaf> Children = new List<DirectoryLeaf>();
 
-		public Directory(Directory parent, string name)
+		public DirectoryLeaf(DirectoryLeaf parent, string name)
 		{
 			Parent = parent;
 			Name = name;
 		}
 
-		public void Add(Directory directory)
+		public void Add(DirectoryLeaf directory)
 		{
 			Children.Add(directory);
 		}
 
-		public Directory this[string key]
+		public List<DirectoryLeaf> GetPath()
+		{
+			List<DirectoryLeaf> path = new List<DirectoryLeaf>() { this };
+			DirectoryLeaf current = this;
+
+			while(current.Parent != null)
+			{
+				current = current.Parent;
+				path.Add(current);
+			}
+			
+			return path;
+		}
+
+		public DirectoryLeaf this[string key]
 		{
 			get
 			{
@@ -109,10 +126,9 @@ namespace InvoiceManager
 			int level = 0;
 			BuildString(this, ref main, level);
 			return main;
-			// Recursive function that adds a name to a string with \n and then calls the same function on its children
 		}
 
-		private void BuildString(Directory directory, ref string main, int level)
+		private void BuildString(DirectoryLeaf directory, ref string main, int level)
 		{
 			for (int i = 0; i < level; i++)
 				main += '\t';
